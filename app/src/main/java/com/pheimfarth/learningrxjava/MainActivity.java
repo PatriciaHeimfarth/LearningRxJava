@@ -8,6 +8,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
     private void simpleFunctionWithObserverAndLogs(){
         Observable<String> membersObservable =
                 Observable.just("Steven", "Jane", "Phillip");
+                //.map( x -> x.concat(" Schmidt")); //Apply function on every item
+        /*.map(new Function<String, String>() {
+            @Override
+            public String apply(String s) throws Exception {
+                return s.concat(" Schulze");
+            }
+        });*/
+
 
         Observer<String> membersObserver = getMembersObserver();
 
